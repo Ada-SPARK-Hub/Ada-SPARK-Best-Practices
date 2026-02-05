@@ -53,7 +53,12 @@ prove: check-tools
 		name=$$(basename $$gpr .gpr); \
 		echo ""; \
 		echo "--- Proving $$name ($$gpr) ---"; \
-		gnatprove -P $$gpr --level=0 --report=statistics -j0 2>&1 || { echo "FAILED: $$gpr"; failed=$$((failed + 1)); }; \
+		output=$$(gnatprove -P $$gpr --level=0 --report=statistics -j0 2>&1); \
+		echo "$$output"; \
+		if [ $$? -ne 0 ] || echo "$$output" | grep -qE "(medium:|high:|warning:)"; then \
+			echo "FAILED: $$gpr (errors or warnings detected)"; \
+			failed=$$((failed + 1)); \
+		fi; \
 	done; \
 	echo ""; \
 	if [ $$failed -gt 0 ]; then \

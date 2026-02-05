@@ -80,14 +80,21 @@ procedure Binary_Search is
       Put_Line ("Is sorted: " & Boolean'Image (Is_Sorted (Arr)));
       New_Line;
 
+      --  Assert that the array is sorted to satisfy Search precondition
+      pragma Assert (Is_Sorted (Arr));
+
       for T of Targets loop
          Index := Search (Arr, T);
 
          if Index in Arr'Range then
-            Put_Line ("Found" & Integer'Image (T) &
-                     " at index" & Integer'Image (Index));
+            Put ("Found");
+            Put (Integer'Image (T));
+            Put (" at index");
+            Put (Integer'Image (Index));
+            New_Line;
          else
-            Put_Line (Integer'Image (T) & " not found");
+            Put (Integer'Image (T));
+            Put_Line (" not found");
          end if;
       end loop;
    end Test_Binary_Search;

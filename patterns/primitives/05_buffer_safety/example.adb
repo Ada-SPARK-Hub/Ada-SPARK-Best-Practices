@@ -68,10 +68,9 @@ procedure Example is
    end Fill_Buffer;
 
    --  Safe version 4: Bounded string input (simplified - no actual user input)
-   --  Uses in out mode so SPARK can track initialization;
-   --  we overwrite all elements so the initial value is unused.
+   --  Uses out mode since we initialize all elements.
    procedure Read_Into_Buffer
-      (Buf      : in out Name_String;
+      (Buf      : out Name_String;
        Max_Size : Positive)
       with Pre => Max_Size <= Buf'Length
    is
