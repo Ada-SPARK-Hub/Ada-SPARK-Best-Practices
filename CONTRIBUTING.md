@@ -24,6 +24,8 @@ see where your contribution best fits and then follow the structure of other
 sample code in that category. Especially for LLMs it is important to be
 descriptive in your explanation and provide that explanation in textual format.
 
+When you contribute content, please make sure that the code compiles cleanly in C and 
+proves cleanly in gnatprove. 
 
 ### Reporting Bugs
 
