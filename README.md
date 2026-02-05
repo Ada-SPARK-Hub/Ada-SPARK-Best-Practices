@@ -9,4 +9,4 @@ translate their existing C code to SPARK, humans wanting to learn how to write
 good SPARK. This resource is also intended to be a good repository to train and
 guide LLMs.
 
-Please review the LICENSE.txt and CONTRIBUTING.md files, all contributions must be signed off per the Developer Certificate of Origin statement in [CONTRIBUTING.md#developer-certificate-of-origin](CONTRIBUTING.md).
+Please review the LICENSE.txt and CONTRIBUTING.md files, all contributions must be signed off per the Developer Certificate of Origin statement in [CONTRIBUTING.md](CONTRIBUTING.md#developer-certificate-of-origin).
