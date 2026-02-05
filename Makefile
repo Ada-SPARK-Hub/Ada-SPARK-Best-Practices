@@ -11,6 +11,7 @@
 GPR_FILES := $(shell find patterns -name '*.gpr' | sort)
 
 .PHONY: all build prove clean check-tools
+.DEFAULT_GOAL := all
 
 check-tools:
 	@missing=""; \
