@@ -5,12 +5,11 @@ Thank you for your interest in contributing to Ada-SPARK-Best-Practices! We welc
 ## Table of Contents
 
 - [Code of Conduct](#code-of-conduct)
-- [Getting Started](#getting-started)
 - [How to Contribute](#how-to-contribute)
 - [Developer Certificate of Origin](#developer-certificate-of-origin)
 - [Commit Guidelines](#commit-guidelines)
 - [Pull Request Process](#pull-request-process)
-- [Community](#community)
+
 
 ## Code of Conduct
 
