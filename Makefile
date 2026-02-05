@@ -8,21 +8,25 @@
 #
 # Requires: GNAT and GNATprove on PATH (via Alire toolchain or system install)
 
-# Auto-detect Alire toolchain paths if gprbuild isn't already on PATH.
-# Override with: make build GPRBUILD_BIN=/path/to/bin GNAT_BIN=/path/to/bin
-ALIRE_TOOLCHAINS ?= $(HOME)/.local/share/alire/toolchains
-GPRBUILD_BIN     ?= $(lastword $(wildcard $(ALIRE_TOOLCHAINS)/gprbuild_*/bin))
-GNAT_BIN         ?= $(lastword $(wildcard $(ALIRE_TOOLCHAINS)/gnat_native_*/bin))
-SPARK_BIN        ?= $(lastword $(wildcard $(HOME)/.local/share/alire/releases/gnatprove_*/libexec/spark/bin))
-export PATH      := $(GPRBUILD_BIN):$(GNAT_BIN):$(SPARK_BIN):$(PATH)
-
 GPR_FILES := $(shell find patterns -name '*.gpr' | sort)
 
-.PHONY: all build prove clean
+.PHONY: all build prove clean check-tools
+
+check-tools:
+	@missing=""; \
+	command -v gcc >/dev/null 2>&1       || missing="$$missing gcc"; \
+	command -v gprbuild >/dev/null 2>&1  || missing="$$missing gprbuild"; \
+	command -v gnatprove >/dev/null 2>&1 || missing="$$missing gnatprove"; \
+	if [ -n "$$missing" ]; then \
+		echo "Error: the following required tools were not found in PATH:$$missing"; \
+		echo "Install them via Alire (https://alire.ada.dev) or add them to your PATH."; \
+		echo "  Current PATH: $$PATH"; \
+		exit 1; \
+	fi
 
 all: build prove
 
-build:
+build: check-tools
 	@echo "=== Building all examples ==="
 	@failed=0; \
 	for gpr in $(GPR_FILES); do \
@@ -40,7 +44,7 @@ build:
 		echo "=== All examples built successfully ==="; \
 	fi
 
-prove:
+prove: check-tools
 	@echo "=== Proving all examples ==="
 	@failed=0; \
 	for gpr in $(GPR_FILES); do \
@@ -58,7 +62,7 @@ prove:
 		echo "=== All examples proved successfully ==="; \
 	fi
 
-clean:
+clean: check-tools
 	@echo "=== Cleaning all examples ==="
 	@for gpr in $(GPR_FILES); do \
 		dir=$$(dirname $$gpr); \
