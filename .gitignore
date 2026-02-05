@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Build artifacts
 **/obj/
 
@@ -8,3 +9,6 @@
 .DS_Store
 
 .claude/
+=======
+.DS_Store
+>>>>>>> edcd5c0 (Add .gitignore)
