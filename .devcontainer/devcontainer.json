@@ -2,6 +2,9 @@
   "name": "Ada-SPARK Best Practices",
   "image": "registry.gitlab.com/mhermeling/alire-sdk:latest",
   "postCreateCommand": "alr install --prefix ~/local gnat_native && alr install --prefix ~/local gnatprove && alr install --prefix ~/local gprbuild && echo 'export PATH=\"$HOME/local/bin:$PATH\"' >> ~/.bashrc",
+  "mounts": [
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=${containerEnv:HOME}/.ssh,type=bind,readonly"
+  ],
   "remoteEnv": {
     "PATH": "${containerEnv:HOME}/local/bin:${containerEnv:PATH}"
   },
