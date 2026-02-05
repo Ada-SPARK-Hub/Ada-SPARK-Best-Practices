@@ -1,0 +1,9 @@
+project Pointer_Elimination is
+   for Source_Dirs use (".");
+   for Object_Dir use "obj";
+   for Main use ("example.adb");
+
+   package Compiler is
+      for Local_Configuration_Pragmas use "spark.adc";
+   end Compiler;
+end Pointer_Elimination;

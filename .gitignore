@@ -1,0 +1,10 @@
+# Build artifacts
+**/obj/
+
+# GNATprove output
+**/gnatprove/
+
+# OS files
+.DS_Store
+
+.claude/
