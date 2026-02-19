@@ -1,1 +1,9 @@
+# Build artifacts
+**/obj/
+
+# GNATprove output
+**/gnatprove/
+
+.claude/
 .DS_Store
+
