@@ -1,14 +1,9 @@
-<<<<<<< HEAD
 # Build artifacts
 **/obj/
 
 # GNATprove output
 **/gnatprove/
 
-# OS files
+.claude/
 .DS_Store
 
-.claude/
-=======
-.DS_Store
->>>>>>> edcd5c0 (Add .gitignore)
